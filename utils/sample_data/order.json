@@ -1,0 +1,18 @@
+{
+  "-MiBsfuTafbEQ7eAULxV": {
+  "name": "Smith",
+  "firebaseKey": "-MiBsfuTafbEQ7eAULxV",
+  "phone": "615-223-1234",
+  "email": "mrssmith@gmail.com",
+  "type": "Phone",
+  "status": false
+  },
+  "-MiBt86VzkC-EGmJnxjm": {
+  "name": "Jones",
+  "firebaseKey": "-MiBt86VzkC-EGmJnxjm",
+  "phone": "615-223-1234",
+  "email": "mrjones@gmail.com",
+  "type": "In person",
+  "status": true
+  }
+}

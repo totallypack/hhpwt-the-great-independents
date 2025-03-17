@@ -1,7 +1,9 @@
 // USE WITH FIREBASE AUTH
-// import ViewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
+import ViewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
+import { getItems } from '../api/itemApiCalls';
+import { getOrders } from '../api/orderApiCalls';
 
 const init = () => {
   document.querySelector('#app').innerHTML = `
@@ -14,12 +16,17 @@ const init = () => {
   `;
   console.warn('YOU ARE UP AND RUNNING!');
 
+  // tests api functionality
+  getItems().then(console.warn);
+  getOrders().then(console.warn);
+  //
+
   document
     .querySelector('#click-me')
     .addEventListener('click', () => console.warn('You clicked that button!'));
 
   // USE WITH FIREBASE AUTH
-  // ViewDirectorBasedOnUserAuthStatus();
+  ViewDirectorBasedOnUserAuthStatus();
 };
 
 init();

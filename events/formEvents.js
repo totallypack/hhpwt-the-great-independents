@@ -1,8 +1,8 @@
-import { createOrder, updateOrder, getOrder } from '../api/orderData';
-import { showOrder } from '../pages/orders';
+import { createOrder, updateOrder, getOrder } from '../api/orderApiCalls';
+import showOrders from '../pages/orders';
 
-const formEvents = (user) => {
-  document.querySelector('#main-container').addEventListener('submit', (e) => {
+const formEvents = () => {
+  document.querySelector('#form-container').addEventListener('submit', (e) => {
     e.preventDefault();
 
     if (e.target.id.includes('submit-order')) {
@@ -11,17 +11,15 @@ const formEvents = (user) => {
         name: document.querySelector('#name').value,
         phone: document.querySelector('#phone').value,
         email: document.querySelector('#email').value,
-        type: document.querySelector('#item-favorite').checked,
-        status: document.querySelector('#item-public').value,
+        type: document.querySelector('#type').checked,
+        status: document.querySelector('#status').value,
         firebaseKey,
-        uid: user.uid,
-        timestamp: Date.now()
       };
 
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOrder(patchPayload).then(() => {
-          getOrder(user.uid).then((item) => showOrder(item));
+          getOrder().then((statement) => showOrders(statement));
         });
       });
     }
@@ -32,15 +30,13 @@ const formEvents = (user) => {
         name: document.querySelector('#name').value,
         phone: document.querySelector('#phone').value,
         email: document.querySelector('#email').value,
-        type: document.querySelector('#item-favorite').checked,
-        status: document.querySelector('#item-public').value,
+        type: document.querySelector('#type').value,
+        status: document.querySelector('#status').value,
         firebaseKey,
-        uid: user.uid,
-        timestamp: Date.now()
       };
 
       updateOrder(patchPayload).then(() => {
-        getOrder(user.uid).then((item) => showOrder(item));
+        getOrder().then((statement) => showOrders(statement));
       });
     }
   });

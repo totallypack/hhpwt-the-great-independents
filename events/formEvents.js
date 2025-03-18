@@ -1,4 +1,4 @@
-import { createOrder, updateOrder, getOrder } from '../api/orderData';
+import { createOrder, updateOrder, getOrders } from '../api/orderApiCalls';
 import { showOrder } from '../pages/orders';
 
 const formEvents = (user) => {
@@ -21,7 +21,7 @@ const formEvents = (user) => {
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOrder(patchPayload).then(() => {
-          getOrder(user.uid).then((item) => showOrder(item));
+          getOrders(user.uid).then((item) => showOrder(item));
         });
       });
     }
@@ -40,7 +40,7 @@ const formEvents = (user) => {
       };
 
       updateOrder(patchPayload).then(() => {
-        getOrder(user.uid).then((item) => showOrder(item));
+        getOrders(user.uid).then((item) => showOrder(item));
       });
     }
   });

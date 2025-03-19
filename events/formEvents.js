@@ -1,7 +1,6 @@
 import { createOrder, updateOrder, getOrders } from '../api/orderApiCalls';
 import showOrders from '../pages/orders';
-
-const formEvents = (user) => {
+onst formEvents = (user) => {
   document.querySelector('#form-container').addEventListener('submit', (e) => {
     e.preventDefault();
     if (e.target.id.includes('submit-order')) {
@@ -19,6 +18,7 @@ const formEvents = (user) => {
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOrder(patchPayload).then(() => {
+
           getOrders(user.uid).then((statement) => showOrders(statement));
         });
       });

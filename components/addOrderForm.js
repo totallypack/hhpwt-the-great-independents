@@ -6,7 +6,7 @@ const addOrderForm = (obj = {}) => {
   clearDom();
 
   const domString = `
-    <form id="${obj.firebaseKey ? `update-item--${obj.firebaseKey}` : 'submit-item'}" class="mb-4">
+    <form id="${obj.firebaseKey ? `update-order--${obj.firebaseKey}` : 'submit-order'}" class="mb-4">
       <div class="form-group">
         <label for="order">Order</label>
         <input type="text" class="form-control" id="name" aria-describedby="item" placeholder="Item Name" value="${obj.name || ''}" required>
@@ -19,7 +19,10 @@ const addOrderForm = (obj = {}) => {
         <label for="email">Email</label>
         <input type="text" class="form-control" id="email" placeholder="Email" value="${obj.email || ''}" required>
       <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="item-type" ${obj.type ? 'checked' : ''}>
+        <select name="type" id="type">
+        <option value="Pizza">Pizza</option>
+        <option value="Wangs">Wangs</option>
+        </select>
         <label class="form-check-label" for="words-learn">Type</label>
       </div>
       <button type="submit" class="btn btn-primary">${obj.firebaseKey ? 'Update' : 'Submit'} Item

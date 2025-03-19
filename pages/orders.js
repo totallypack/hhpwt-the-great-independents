@@ -11,9 +11,11 @@ const showOrders = (orders) => {
     <p class="order-phone">${statement.phone}</p>
     <p class="order-email">${statement.email}</p>
     <p class="order-type">${statement.type}</p>
-    <button id='details--${statement.firebaseKey}>Details</button>
-    <button id='edit--${statement.firebaseKey}>Edit</button>
-    <button id='delete--${statement.firebaseKey}>Delete</button>'`;
+    <div id="order-btns">
+      <button id='details--${statement.firebaseKey}'>Details</button>
+      <button id='edit--${statement.firebaseKey}'>Edit</button>
+      <button id='delete--${statement.firebaseKey}'>Delete</button>
+    </div>`;
   });
   renderToDOM('#cards', domstring);
 };

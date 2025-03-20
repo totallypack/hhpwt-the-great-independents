@@ -7,12 +7,14 @@ import formEvents from '../events/formEvents';
 import navigationEvents from '../events/navEvents';
 import { showItem } from '../pages/items';
 import { showOrder } from '../pages/orders';
+import navBar from '../components/navBar';
 
 const startapp = (user) => {
   console.warn(user);
   domBuilder(user);
   domEvents(user);
   formEvents(user);
+  navBar(user);
   navigationEvents(user);
   logoutButton();
 

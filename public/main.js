@@ -2,8 +2,6 @@
 import ViewDirectorBasedOnUserAuthStatus from '../utils/viewDirector';
 import 'bootstrap'; // import bootstrap elements and js
 import '../styles/main.scss';
-import { getItems } from '../api/itemApiCalls';
-import { getOrders } from '../api/orderApiCalls';
 
 const init = () => {
   document.querySelector('#app').innerHTML = `
@@ -15,11 +13,6 @@ const init = () => {
     <i class="fas fa-user fa-4x"></i> <i class="fab fa-github-square fa-5x"></i>
   `;
   console.warn('YOU ARE UP AND RUNNING!');
-
-  // tests api functionality
-  getItems().then(console.warn);
-  getOrders().then(console.warn);
-  //
 
   document
     .querySelector('#click-me')

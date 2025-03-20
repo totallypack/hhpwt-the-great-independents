@@ -10,7 +10,9 @@ const ViewDirectorBasedOnUserAuthStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       // person is logged in do something...
+      console.warn('User status changed:', user);
       logoutButton();
+      console.warn('are we started?');
       startapp(user);
     } else {
       // person is NOT logged in

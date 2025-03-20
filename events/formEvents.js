@@ -1,27 +1,25 @@
 import { createOrder, updateOrder, getOrders } from '../api/orderApiCalls';
-import { showOrder } from '../pages/orders';
-
-const formEvents = (user) => {
-  document.querySelector('#main-container').addEventListener('submit', (e) => {
+import showOrders from '../pages/orders';
+onst formEvents = (user) => {
+  document.querySelector('#form-container').addEventListener('submit', (e) => {
     e.preventDefault();
-
     if (e.target.id.includes('submit-order')) {
       const [, firebaseKey] = e.target.id.split('--');
       const payload = {
         name: document.querySelector('#name').value,
         phone: document.querySelector('#phone').value,
         email: document.querySelector('#email').value,
-        type: document.querySelector('#item-favorite').checked,
-        status: document.querySelector('#item-public').value,
-        firebaseKey,
+        type: document.querySelector('#type').value,
+        status: 'Open',
         uid: user.uid,
-        timestamp: Date.now()
+        firebaseKey,
       };
 
       createOrder(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateOrder(patchPayload).then(() => {
-          getOrders(user.uid).then((item) => showOrder(item));
+
+          getOrders(user.uid).then((statement) => showOrders(statement));
         });
       });
     }
@@ -32,15 +30,14 @@ const formEvents = (user) => {
         name: document.querySelector('#name').value,
         phone: document.querySelector('#phone').value,
         email: document.querySelector('#email').value,
-        type: document.querySelector('#item-favorite').checked,
-        status: document.querySelector('#item-public').value,
-        firebaseKey,
+        type: document.querySelector('#type').value,
+        status: 'Open',
         uid: user.uid,
-        timestamp: Date.now()
+        firebaseKey,
       };
 
       updateOrder(patchPayload).then(() => {
-        getOrders(user.uid).then((item) => showOrder(item));
+        getOrders(user.uid).then((statement) => showOrders(statement));
       });
     }
   });

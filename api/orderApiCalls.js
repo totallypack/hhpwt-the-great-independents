@@ -1,8 +1,11 @@
 // edit api on your end to take the (uid) parameter
 // ?orderBy="uid"&equalTo="${uid}"
-const endpoint = 'https://hhpwt-44882-default-rtdb.firebaseio.com/';
-const getOrders = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/order.json`, {
+// import client from '../utils/client';
+
+const endpoint = 'https://hhpwt-44882-default-rtdb.firebaseio.com';
+const getOrders = (uid) => new Promise((resolve, reject) => {
+  console.warn(uid);
+  fetch(`${endpoint}/order.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

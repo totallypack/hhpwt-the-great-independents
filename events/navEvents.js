@@ -3,7 +3,7 @@ import addOrderForm from '../components/addOrderForm';
 import showOrders from '../pages/orders';
 
 const navEvents = (user) => {
-  document.querySelector('#navigation').addEventListener('click', (e) => {
+  document.querySelector('#nav-elements').addEventListener('click', (e) => {
     if (e.target.id.includes('view-orders')) {
       console.warn('view orders clicked!');
       console.warn('User:', user);

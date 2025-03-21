@@ -16,6 +16,17 @@ const navEvents = (user) => {
       addOrderForm();
     }
   });
+  document.querySelector('#start-container').addEventListener('click', (e) => {
+    if (e.target.id.includes('view-orders')) {
+      console.warn('view orders clicked!');
+      console.warn('User:', user);
+      getOrders(user.uid).then(showOrders);
+    }
+    if (e.target.id.includes('view-order-form')) {
+      console.warn('create order clicked clicked!');
+      addOrderForm();
+    }
+  });
 
   document.querySelector('#view').addEventListener('click', (e) => {
     if (e.target.id.includes('add-item-btn')) {

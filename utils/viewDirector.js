@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import loginButton from '../components/loginButton';
-import logoutButton from '../components/logoutButton';
 import client from './client';
 import startapp from './startapp';
 
@@ -11,7 +10,6 @@ const ViewDirectorBasedOnUserAuthStatus = () => {
     if (user) {
       // person is logged in do something...
       console.warn('User status changed:', user);
-      logoutButton();
       console.warn('are we started?');
       startapp(user);
     } else {

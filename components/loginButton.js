@@ -2,8 +2,14 @@ import { signIn } from '../utils/auth';
 
 // GOOGLE LOGIN BUTTON
 const loginButton = () => {
-  const domString = '<button id="google-auth" class="btn btn-danger">GOOGLE LOGIN</button>';
-  document.querySelector('#login-form-container').innerHTML = domString;
+  // eslint-disable-next-line quotes
+  const domString = `
+  <image src="https://i.imgur.com/kdRFvj2.jpeg"></image>
+  <button id="google-auth" class="btn btn-danger">Login to Get Started!</button>
+  
+  `;
+
+  document.querySelector('#app').innerHTML = domString;
   document.querySelector('#google-auth').addEventListener('click', signIn);
 };
 

@@ -59,15 +59,12 @@ const formEvents = (user) => {
     const priceValue = priceInput ? Number(priceInput.value) : 0;
 
     if (e.target.id.includes('submit-item')) {
-      const [, firebaseKey] = e.target.id.split('--');
-
       const payload = {
         name: nameValue,
         price: priceValue,
         // eslint-disable-next-line object-shorthand
         orderId: orderId,
         uid: user.uid,
-        firebaseKey,
       };
 
       console.warn('Final payload:', payload);
@@ -91,7 +88,7 @@ const formEvents = (user) => {
         // eslint-disable-next-line object-shorthand
         orderId: orderId,
         uid: user.uid,
-        firebaseKey,
+        firebaseKey
       };
 
       updateItem(patchPayload).then(() => {

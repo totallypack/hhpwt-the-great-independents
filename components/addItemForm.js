@@ -6,8 +6,10 @@ const addItemForm = (orderId, obj = {}) => {
   console.warn('Creating form with orderId:', orderId, 'Type:', typeof orderId);
   clearDom();
 
+  const formId = obj.firebaseKey ? `update-item--${obj.firebaseKey}` : 'submit-item';
+
   const domString = `
-    <form id="submit-item" class="mb-4" data-order-id="${orderId}">
+    <form id="${formId}" class="mb-4" data-order-id="${orderId}">
       <div class="form-group">
         <label for="order">Order</label>
         <input type="text" class="form-control" id="name" aria-describedby="item" placeholder="Item Name" value="${obj.name || ''}" required>

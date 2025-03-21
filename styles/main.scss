@@ -36,3 +36,50 @@ justify-content: space-evenly;
   margin-right: 0;
 }
 //
+//order cards
+#cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center; 
+  padding-top: 100px;
+  gap: 15px;
+}
+#orders-box {
+  background-color: white;
+  color: black;
+  width: 255px;
+  height: 256px;
+}
+#order-name, #order-status, #order-phone, #order-email, #order-type {
+align-items: start;
+}
+#order-btns {
+  display: flex;
+  justify-content: space-between;
+}
+.details-btn {
+  color: #007bff;
+  border: none;
+}
+.edit-btn {
+  color: #8000ff;
+  border: none;
+}
+.delete-btn {
+  color: #ff0000;
+  border: none;
+  margin-left: auto;
+}
+//
+//order form
+#form-container {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.form-group {
+  width: 642px;
+  height: 102px;
+}
+//

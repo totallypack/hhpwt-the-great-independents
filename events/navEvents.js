@@ -1,6 +1,8 @@
 import { getOrders } from '../api/orderApiCalls';
 import addOrderForm from '../components/addOrderForm';
 import showOrders from '../pages/orders';
+import addItemForm from '../components/addItemForm';
+import paymentForm from '../components/paymentForm';
 
 const navEvents = (user) => {
   document.querySelector('#navigation').addEventListener('click', (e) => {
@@ -12,6 +14,17 @@ const navEvents = (user) => {
     if (e.target.id.includes('view-order-form')) {
       console.warn('create order clicked clicked!');
       addOrderForm();
+    }
+  });
+
+  document.querySelector('#view').addEventListener('click', (e) => {
+    if (e.target.id.includes('add-item-btn')) {
+      console.warn('create item clicked clicked!');
+      addItemForm();
+    }
+    if (e.target.id.includes('payment-btn')) {
+      console.warn('go to payment clicked clicked!');
+      paymentForm();
     }
   });
 };

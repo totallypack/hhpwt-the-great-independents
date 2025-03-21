@@ -36,9 +36,6 @@ const viewItems = (user) => {
   document.querySelector('#confirm-delete').addEventListener('click', (e) => {
     const firebaseKey = e.target.getAttribute('data-key');
 
-    // Hide the modal
-    document.querySelector('#delete-confirmation-modal').classList.remove('show');
-
     // Delete the item
     deleteItem(firebaseKey).then(() => {
       getItems(user.uid).then((data) => showItem(data));

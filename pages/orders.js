@@ -6,11 +6,14 @@ const showOrders = (orders) => {
   console.warn('page loaded');
   let domstring = '';
   orders.forEach((statement) => {
-    domstring += `<h3 class="order-name">${statement.name}</h3>
+    domstring += `<div id="orders-box">
+    <div id="order-txt">
+    <h3 class="order-name">${statement.name}</h3>
     <p class="order-status">${statement.status}</p>
     <p class="order-phone">${statement.phone}</p>
     <p class="order-email">${statement.email}</p>
     <p class="order-type">${statement.type}</p>
+    </div>
     <div id="order-btns">
       <button id='details--${statement.firebaseKey}'>Details</button>
       <button id='edit-orders--${statement.firebaseKey}'>Edit</button>

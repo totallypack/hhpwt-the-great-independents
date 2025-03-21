@@ -2,11 +2,13 @@ import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
 // USING THIS FORM FOR BOTH CREATE AND UPDATE
-const paymentForm = (obj = {}) => {
+const paymentForm = (orderId, obj = {}) => {
+  // // eslint-disable-next-line no-undef
+  // const orderId = sessionStorage.getItem('activeOrderId');
   clearDom();
 
   const domString = `
-    <form id="${obj.firebaseKey ? `update-payment--${obj.firebaseKey}` : 'submit-payment'}" class="mb-4">
+    <form id="submit-payment--${orderId}" class="mb-4">
       <div class="form-group">
         <label for="payment">Payment Type</label>
         <select class="form-select" id="payment" required>

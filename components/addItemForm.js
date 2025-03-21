@@ -2,11 +2,14 @@ import clearDom from '../utils/clearDom';
 import renderToDOM from '../utils/renderToDom';
 
 // USING THIS FORM FOR BOTH CREATE AND UPDATE
-const addItemForm = (obj = {}) => {
+const addItemForm = (orderId, obj = {}) => {
+  console.warn('Creating form with orderId:', orderId, 'Type:', typeof orderId);
   clearDom();
 
+  const formId = obj.firebaseKey ? `update-item--${obj.firebaseKey}` : 'submit-item';
+
   const domString = `
-    <form id="${obj.firebaseKey ? `update-item--${obj.firebaseKey}` : 'submit-item'}" class="mb-4">
+    <form id="${formId}" class="mb-4" data-order-id="${orderId}">
       <div class="form-group">
         <label for="order">Order</label>
         <input type="text" class="form-control" id="name" aria-describedby="item" placeholder="Item Name" value="${obj.name || ''}" required>

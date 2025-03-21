@@ -7,7 +7,7 @@ const totalPrice = (items) => {
   return items.reduce((total, item) => {
     const itemPrice = Number(item.price) || 0;
     return total + itemPrice;
-  }, 0); // Add this initial value of 0
+  }, 0);
 };
 
 export default totalPrice;

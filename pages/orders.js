@@ -15,10 +15,9 @@ const showOrders = (orders) => {
     <p class="order-type">${statement.type}</p>
     </div>
     <div id="order-btns">
-      <button class="details-btn" "id='details--${statement.firebaseKey}'>Details</button>
-      <button class="edit-btn" id='edit--${statement.firebaseKey}'>Edit</button>
-      <button class="delete-btn" id='delete--${statement.firebaseKey}'>Delete</button>
-    </div>
+      <button id='details--${statement.firebaseKey}'>Details</button>
+      <button id='edit-orders--${statement.firebaseKey}'>Edit</button>
+      <button id='delete-orders--${statement.firebaseKey}'>Delete</button>
     </div>`;
   });
   renderToDOM('#cards', domstring);

@@ -15,8 +15,15 @@ const domEvents = (user) => {
       });
     }
     if (e.target.id.includes('details')) {
+      const [, firebaseKey] = e.target.id.split('--');
+      console.warn('Details button clicked - Order ID:', firebaseKey);
       emptyItem();
-      getItems(user.uid).then(showItem);
+      // // eslint-disable-next-line no-undef
+      // sessionStorage.setItem('activeOrderId', firebaseKey);
+      getItems(firebaseKey).then((items) => {
+        console.warn('Items retrieved:', items);
+        showItem(items, firebaseKey);
+      });
     }
     if (e.target.id.includes('edit-orders')) {
       console.warn('clicked edit');
@@ -26,14 +33,26 @@ const domEvents = (user) => {
     if (e.target.id.includes('delete-item')) {
       console.warn('clicked delete');
       const [, firebaseKey] = e.target.id.split('--');
-      deleteItem(firebaseKey).then(() => {
-        getItems(user.uid).then(showItem);
+
+      getSingleItem(firebaseKey).then(async (itemObj) => {
+        const { orderId } = itemObj;
+
+        await deleteItem(firebaseKey);
+        getItems(orderId).then((items) => showItem(items, orderId));
       });
     }
     if (e.target.id.includes('edit-item')) {
       console.warn('clicked edit');
       const [, firebaseKey] = e.target.id.split('--');
-      getSingleItem(firebaseKey).then((OrderSta) => addItemForm(OrderSta));
+
+      getSingleItem(firebaseKey).then((itemObj) => {
+        const { orderId } = itemObj;
+
+        console.warn('Edit item, orderId:', orderId, 'Type:', typeof orderId);
+        console.warn('Item object:', itemObj);
+
+        addItemForm(orderId, itemObj);
+      });
     }
   });
 };

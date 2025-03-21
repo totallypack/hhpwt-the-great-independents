@@ -1,8 +1,8 @@
 // edit api on your end to take the (uid) parameter
 // ?orderBy="uid"&equalTo="${uid}"
 const endpoint = 'https://hhpwt-44882-default-rtdb.firebaseio.com/';
-const getItems = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/item.json`, {
+const getItems = (orderId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/item.json?orderBy="orderId"&equalTo="${orderId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -10,17 +10,22 @@ const getItems = () => new Promise((resolve, reject) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.warn('Raw data from items query:', data);
       if (data) {
         resolve(Object.values(data));
       } else {
         resolve([]);
       }
     })
-    .catch(reject);
-  console.warn('did getItem work?');
+    .catch((error) => {
+      console.error('Error fetching items:', error);
+      reject(error);
+    });
 });
 
 const createItem = (payload) => new Promise((resolve, reject) => {
+  console.warn('Payload before sending to Firebase:', payload);
+  console.warn('Price value and type:', payload.price, typeof payload.price);
   fetch(`${endpoint}/item.json`, {
     method: 'POST',
     headers: {
@@ -31,10 +36,10 @@ const createItem = (payload) => new Promise((resolve, reject) => {
     .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
-  console.warn('did createItem work');
 });
 
 const updateItem = (payload) => new Promise((resolve, reject) => {
+  console.warn('Updating item with payload:', payload);
   fetch(`${endpoint}/item/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
@@ -43,9 +48,11 @@ const updateItem = (payload) => new Promise((resolve, reject) => {
     body: JSON.stringify(payload),
   })
     .then((response) => response.json())
-    .then(resolve)
+    .then((data) => {
+      console.warn('Update response:', data);
+      resolve(data);
+    })
     .catch(reject);
-  console.warn('did updateItem work');
 });
 
 const deleteItem = (firebaseKey) => new Promise((resolve, reject) => {

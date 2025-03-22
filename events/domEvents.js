@@ -55,5 +55,13 @@ const domEvents = (user) => {
       });
     }
   });
+  document.querySelector('#main-container').addEventListener('click', (e) => {
+    if (e.target.id.includes('view-btn')) {
+      getOrders(user.uid).then(showOrders);
+    }
+    if (e.target.id.includes('create-btn')) {
+      addOrderForm();
+    }
+  });
 };
 export default domEvents;

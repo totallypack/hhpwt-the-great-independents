@@ -6,7 +6,7 @@ const navbar = () => {
       <button id="view-orders">View Orders</button>
       <button id="view-order-form">Create an Order</button>
       <div id="search-container">
-      <input id="search-bar" placeholder="Search Orders">
+      <input id="search-bar" type="search" placeholder="Search Orders">
       </div>
       <div id="login-form-container"></div>
       `;

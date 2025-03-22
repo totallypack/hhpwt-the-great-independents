@@ -10,7 +10,7 @@ body {
 }
 
 //nav bar
-#nav-container {
+#navigation {
 background-color: #343a40;
 height: 56px;
 padding: 8px 16px;
@@ -34,7 +34,8 @@ justify-content: space-evenly;
   color: white;
 }
 #search-container {
-  margin-right: auto;
+  margin-left: auto;
+  margin-right: 5px;
   margin-top: 5px;
 }
 //
@@ -111,8 +112,17 @@ background-color: #17A2B8;
 // login page fix
 .login-img {
   display: block;
+  max-width: 25%;
+  max-height: 25%;
+  margin-top: 300px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 15px;
+}
+.login-img2 {
+  display: block;
+  margin-left: 10px;
+  margin-right: 15px;
 }
 #google-auth {
   display: block;

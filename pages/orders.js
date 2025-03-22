@@ -6,7 +6,8 @@ const showOrders = (orders) => {
   console.warn('page loaded');
   let domstring = '';
   orders.forEach((statement) => {
-    domstring += `<div id="orders-box">
+    domstring += `
+    <div id="orders-box">
     <div id="order-txt">
     <h3 class="order-name">${statement.name}</h3>
     <p class="order-status">${statement.status}</p>
@@ -15,9 +16,10 @@ const showOrders = (orders) => {
     <p class="order-type">${statement.type}</p>
     </div>
     <div id="order-btns">
-      <button id='details--${statement.firebaseKey}'>Details</button>
-      <button id='edit-orders--${statement.firebaseKey}'>Edit</button>
-      <button id='delete-orders--${statement.firebaseKey}'>Delete</button>
+      <button class="details-btn" id='details--${statement.firebaseKey}'>Details</button>
+      <button class="edit-btn" id='edit-orders--${statement.firebaseKey}'>Edit</button>
+      <button class="delete-btn" id='delete-orders--${statement.firebaseKey}'>Delete</button>
+    </div>
     </div>`;
   });
   renderToDOM('#cards', domstring);

@@ -1,5 +1,4 @@
 import navbar from '../pages/navbar';
-import logoutButton from '../components/logoutButton';
 import domBuilder from '../components/domBuilder';
 import domEvents from '../events/domEvents';
 import formEvents from '../events/formEvents';
@@ -13,6 +12,5 @@ const startapp = (user) => {
   navEvents(user);
   domEvents(user);
   formEvents(user);
-  logoutButton();
 };
 export default startapp;

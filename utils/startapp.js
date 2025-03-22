@@ -4,6 +4,7 @@ import domEvents from '../events/domEvents';
 import formEvents from '../events/formEvents';
 import navEvents from '../events/navEvents';
 import showWelcome from '../pages/welcome';
+import searchEvents from '../events/searchEvents';
 
 const startapp = (user) => {
   console.warn('is the app started?');
@@ -14,5 +15,6 @@ const startapp = (user) => {
   navEvents(user);
   domEvents(user);
   formEvents(user);
+  searchEvents(user);
 };
 export default startapp;

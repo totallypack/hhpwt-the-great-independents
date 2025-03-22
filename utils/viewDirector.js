@@ -16,7 +16,7 @@ const ViewDirectorBasedOnUserAuthStatus = () => {
       logoutButton();
     } else {
       // person is NOT logged in
-      document.querySelector('#app').style.display = 'none';
+      console.warn('no user');
       loginButton();
     }
   });

@@ -75,10 +75,37 @@ const getSingleOrder = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const searchOrder = (e, uid) => new Promise((resolve, reject) => {
+  const userInput = e.target.value.toLowerCase();
+  fetch(`${endpoint}/order.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((orderData) => {
+      if (!orderData) {
+        resolve([]); // Resolve with empty array if no data
+        return;
+      }
+      // Convert Firebase Object into an array
+      const ordersArray = Object.keys(orderData).map((key) => ({
+        firebaseKey: key,
+        ...orderData[key],
+      }));
+      // Filter books based on title or description
+      const searchResult = ordersArray.filter((order) => order.name.toLowerCase().includes(userInput) || order.email.toLowerCase().includes(userInput));
+      resolve(searchResult); // Resolve with filtered results
+    })
+    .catch(reject);
+});
+
 export {
   getOrders,
   createOrder,
   updateOrder,
   deleteOrder,
   getSingleOrder,
+  searchOrder,
 };

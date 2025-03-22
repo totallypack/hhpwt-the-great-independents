@@ -5,7 +5,7 @@ import addItemForm from '../components/addItemForm';
 import paymentForm from '../components/paymentForm';
 
 const navEvents = (user) => {
-  document.querySelector('#nav-container').addEventListener('click', (e) => {
+  document.querySelector('#navigation').addEventListener('click', (e) => {
     if (e.target.id.includes('view-orders')) {
       console.warn('view orders clicked!');
       console.warn('User:', user);

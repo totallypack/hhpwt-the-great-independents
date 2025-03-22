@@ -4,6 +4,11 @@ import renderToDOM from '../utils/renderToDom';
 const showOrders = (orders) => {
   clearDom();
   console.warn('page loaded');
+  console.warn(orders); // Check the content of the orders array
+  if (!Array.isArray(orders)) {
+    console.error('Expected orders to be an array:', orders);
+    return;
+  }
   let domstring = '';
   orders.forEach((statement) => {
     domstring += `

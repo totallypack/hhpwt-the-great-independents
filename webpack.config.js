@@ -65,5 +65,10 @@ module.exports = {
   // Opens browser on run of npm start 
   devServer: {
     open: true
+  },
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
   }
 };
